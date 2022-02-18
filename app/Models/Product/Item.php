@@ -42,4 +42,12 @@ class Item extends Model
             'item_category'
         );
     }
+
+    public function tag($col)
+    {
+        for ($i=0;$i<count(json_decode($this->item_tag));$i++){
+            $tag[] = Tag::where('tag_id', $this->item_tag[$i])->value($col);
+        }
+        return $tag;
+    }
 }

@@ -175,38 +175,38 @@
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/1.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image0" src="{{asset('assets/images/product-image/small-image/1.webp')}}" alt="" width="570px">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/2.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image1" src="{{asset('assets/images/product-image/small-image/2.webp')}}" alt="" width="570px">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/3.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image2" src="{{asset('assets/images/product-image/small-image/3.webp')}}" alt="" width="570px">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/4.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image3" src="{{asset('assets/images/product-image/small-image/4.webp')}}" alt="" width="570px">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/5.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image4" src="{{asset('assets/images/product-image/small-image/5.webp')}}" alt="" width="570px">
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/small-image/1.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image-small0" src="{{asset('assets/images/product-image/small-image/1.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/small-image/2.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image-small1" src="{{asset('assets/images/product-image/small-image/2.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/small-image/3.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image-small2" src="{{asset('assets/images/product-image/small-image/3.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/small-image/4.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image-small3" src="{{asset('assets/images/product-image/small-image/4.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="img-responsive m-auto" src="assets/images/product-image/small-image/5.webp" alt="">
+                                        <img class="img-responsive m-auto" id="image-small4" src="{{asset('assets/images/product-image/small-image/5.webp')}}" alt="">
                                     </div>
                                 </div>
                                 <!-- Add Arrows -->
@@ -218,28 +218,18 @@
                         </div>
                         <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-details-content quickview-content">
-                                <h2>{{$item->item_title}}</h2>
+                                <h2 class="item-title"></h2>
                                 <div class="pricing-meta">
                                     <ul class="d-flex">
                                         <li class="new-price">$20.90</li>
                                     </ul>
                                 </div>
-                                <div class="pro-details-rating-wrap">
-                                    <div class="rating-product">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span class="read-review"><a class="reviews" href="#">( 2 Review )</a></span>
-                                </div>
-                                <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
+                                <p class="mt-30px item-desc" style="text-align: justify"></p>
                                 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                                     <span>SKU:</span>
                                     <ul class="d-flex">
                                         <li>
-                                            <a href="#">Ch-256xl</a>
+                                            <a href="#" class="item-sku">Ch-256xl</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -247,21 +237,15 @@
                                     <span>Categories: </span>
                                     <ul class="d-flex">
                                         <li>
-                                            <a href="#">Smart Device, </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">ETC</a>
+                                            <a href="#" class="item-category">Smart Device</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                                     <span>Tags: </span>
-                                    <ul class="d-flex">
+                                    <ul class="d-flex item-tag">
                                         <li>
                                             <a href="#">Smart Device, </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Phone</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -290,11 +274,12 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+        var csrf_token = {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
         $('.btn-detail').click(function (e){
             e.preventDefault();
             var item_id = $(this).data('num');
             $.ajax({
-                headers: csrf-token,
+                headers: csrf_token,
                 url : '{{route('home')}}',
                 type: 'post',
                 dataType: 'json',
@@ -304,7 +289,22 @@
                     'item_id': item_id,
                 },
                 success : function (resp) {
-                    alert(resp)
+                    var image = jQuery.parseJSON(resp.item_image);
+                    var tag = resp.item_tag;
+                    for (let i = 0; i < image.length; i++) {
+                        $("#image"+i).attr("src",'{{asset('storage/images/product')}}/' + image[i]);
+                        $("#image-small"+i).attr("src",'{{asset('storage/images/product')}}/' + image[i]);
+                    }
+                    for (let i = 0; i < tag.length; i++) {
+                        item_tag += '<li> <a href="#">'+ tag[i]+' </a></li>'
+                    }
+                    $('.item-title').html(resp.item_title)
+                    $('.new-price').html('$' + resp.item_price)
+                    $('.item-desc').html(resp.item_desc)
+                    $('.item-sku').html(resp.item_sku)
+                    $('.item-category').html(resp.item_category)
+                    $('.item-tag').html(item_tag)
+                    $('#item-detail').modal('show')
                 }
             });
         })

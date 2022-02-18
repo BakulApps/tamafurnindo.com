@@ -32,7 +32,9 @@ class MainController extends Controller
 
         if ($request->isMethod('post')){
             if ($request->_type == 'data' && $request->_data == 'item'){
-                $msg = Item::find($request->item_id)->first();
+                $msg = Item::find($request->item_id);
+                $msg->item_category = $msg->category->category_name;
+                $msg->item_tag = $msg->tag('tag_name');
             }
             return response()->json($msg);
         }

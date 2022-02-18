@@ -32,7 +32,7 @@ class ItemFactory extends Factory
             'item_material' => '60% cotton, 40% polyester',
             'item_info' => 'American heirloom jean shorts pug seitan letterpress',
             'item_category' => 1,
-            'item_tag' => 1,
+            'item_tag' => json_encode([1,2,3,4,5,6,7]),
             'item_new' => $this->faker->numberBetween(0,1),
         ];
     }
