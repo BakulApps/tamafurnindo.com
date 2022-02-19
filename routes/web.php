@@ -22,11 +22,7 @@ Route::get('/faq', 'MainController@faq')->name('faq');
 Route::get('contact', 'MainController@contact')->name('contact');
 Route::get('/category/{id}', 'MainController@category')->name('category');
 Route::get('/tag/{id}', 'MainController@tag')->name('tag');
-Route::get('/item/{id}', 'MainController@item')->name('item');
+Route::get('/item/{id}/view', 'MainController@item')->name('item');
 Route::get('/test', function (){
-    $i = 1;
-    while ($i = 5){
-        $i++;
-        return $i . ', ';
-    }
+    return \App\Models\Product\Tag::find(4)->tag_name;
 });

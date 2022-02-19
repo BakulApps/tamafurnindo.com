@@ -45,8 +45,10 @@ class Item extends Model
 
     public function tag($col)
     {
-        for ($i=0;$i<count(json_decode($this->item_tag));$i++){
-            $tag[] = Tag::where('tag_id', $this->item_tag[$i])->value($col);
+        $tag = [];
+        $item_tag = json_decode($this->item_tag);
+        for ($i=0;$i<count($item_tag);$i++){
+            $tag[] = Tag::find($item_tag[$i])->$col;
         }
         return $tag;
     }

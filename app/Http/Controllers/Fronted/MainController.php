@@ -28,8 +28,6 @@ class MainController extends Controller
             (object) ['name' => 'robot', 'content' => 'index, follow'],
             (object) ['name' => 'description', 'content' => 'Hmart-Smart Product eCommerce html Template']
         ];
-        $this->data['items'] = Item::orderBy('item_id', 'ASC')->paginate(12);
-
         if ($request->isMethod('post')){
             if ($request->_type == 'data' && $request->_data == 'item'){
                 $msg = Item::find($request->item_id);
@@ -39,7 +37,59 @@ class MainController extends Controller
             return response()->json($msg);
         }
         else {
+            if ($request->item_sort == 'title' && $request->sort_by == 'asc'){
+                $this->data['items'] = Item::orderBy('item_title', 'ASC')->paginate(12);
+                $this->data['sortby'] = 'Name, A to Z';
+            }
+            elseif ($request->item_sort == 'title' && $request->sort_by == 'desc'){
+                $this->data['items'] = Item::orderBy('item_title', 'DESC')->paginate(12);
+                $this->data['sortby'] = 'Name, Z to A';
+            }
+            elseif ($request->item_sort == 'date' && $request->sort_by == 'asc'){
+                $this->data['items'] = Item::orderBy('item_id', 'ASC')->paginate(12);
+                $this->data['sortby'] = 'Sort By old';
+            }
+            elseif ($request->item_sort == 'date' && $request->sort_by == 'desc'){
+                $this->data['items'] = Item::orderBy('item_id', 'DESC')->paginate(12);
+                $this->data['sortby'] = 'Sort By new';
+            }
+            else{
+                $this->data['items'] = Item::orderBy('item_id', 'ASC')->paginate(12);
+                $this->data['sortby'] = 'Default';
+            }
             return view('fronted.home', $this->data);
         }
+    }
+
+    public function item($id)
+    {
+        $this->data['meta'] = (object) [
+            (object) ['name' => 'robot', 'content' => 'index, follow'],
+            (object) ['name' => 'description', 'content' => 'Hmart-Smart Product eCommerce html Template']
+        ];
+        $item = Item::find($id);
+        $item->item_image = $item->image();
+        $item->item_tag = $item->tag('tag_name');
+        $this->data['item'] = $item;
+        $this->data['relate_item'] = Item::where('item_category', $item->item_category)->get();
+        return view('fronted.item-detail', $this->data);
+    }
+
+    public function blog()
+    {
+        $this->data['meta'] = (object) [
+            (object) ['name' => 'robot', 'content' => 'index, follow'],
+            (object) ['name' => 'description', 'content' => 'Hmart-Smart Product eCommerce html Template']
+        ];
+        return view('fronted.blog', $this->data);
+    }
+
+    public function profile()
+    {
+        $this->data['meta'] = (object) [
+            (object) ['name' => 'robot', 'content' => 'index, follow'],
+            (object) ['name' => 'description', 'content' => 'Hmart-Smart Product eCommerce html Template']
+        ];
+        return view('fronted.profile', $this->data);
     }
 }

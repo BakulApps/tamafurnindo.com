@@ -23,14 +23,12 @@
                             </div>
                             <!-- Single Wedge End -->
                             <div class="header-bottom-set dropdown">
-                                <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
+                                <button class="dropdown-toggle header-action-btn" id="btn-sort" data-bs-toggle="dropdown">{{$sortby}} <i class="fa fa-angle-down"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a class="dropdown-item" href="#">Name, A to Z</a></li>
-                                    <li><a class="dropdown-item" href="#">Name, Z to A</a></li>
-                                    <li><a class="dropdown-item" href="#">Price, low to high</a></li>
-                                    <li><a class="dropdown-item" href="#">Price, high to low</a></li>
-                                    <li><a class="dropdown-item" href="#">Sort By new</a></li>
-                                    <li><a class="dropdown-item" href="#">Sort By old</a></li>
+                                    <li><a class="dropdown-item" href="{{route('home')}}?item_sort=title&sort_by=asc">Name, A to Z</a></li>
+                                    <li><a class="dropdown-item" href="{{route('home')}}?item_sort=title&sort_by=desc">Name, Z to A</a></li>
+                                    <li><a class="dropdown-item" href="{{route('home')}}?item_sort=date&sort_by=desc">Sort By new</a></li>
+                                    <li><a class="dropdown-item" href="{{route('home')}}?item_sort=date&sort_by=asc">Sort By old</a></li>
                                 </ul>
                             </div>
                             <!-- Single Wedge Start -->
@@ -64,21 +62,21 @@
                                                                 <img class="hover-image" src="{{asset('storage/images/product/'. $item->image()[0])}}" alt="Product" />
                                                             </a>
                                                         </div>
-                                                        <div class="content">
+                                                        <div class="content" style="">
+                                                            <h5 class="title" style="text-align: center"><a href="{{route('item', $item->item_id)}}">{{$item->item_title}}</a></h5>
                                                             <span class="category"><a href="#">{{$item->category->category_name}}</a></span>
-                                                            <h5 class="title"><a href="{{route('item', $item->item_id)}}">{{$item->item_title}}</a></h5>
-                                                            <span class="price">
-                                                                @if($item->item_discount > 0)
-                                                                    <span class="old">${{$item->item_price}}</span>
-                                                                    <span class="new">${{($item->item_price) - (($item->item_price * $item->item_discount)/100)}}</span>
-                                                                @else
-                                                                    <span class="new">${{$item->item_price}}</span>
-                                                                @endif
-                                                            </span>
+{{--                                                            <span class="price">--}}
+{{--                                                                @if($item->item_discount > 0)--}}
+{{--                                                                    <span class="old">${{$item->item_price}}</span>--}}
+{{--                                                                    <span class="new">${{($item->item_price) - (($item->item_price * $item->item_discount)/100)}}</span>--}}
+{{--                                                                @else--}}
+{{--                                                                    <span class="new">${{$item->item_price}}</span>--}}
+{{--                                                                @endif--}}
+{{--                                                            </span>--}}
                                                         </div>
                                                         <div class="actions">
-                                                            <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i class="pe-7s-like"></i></button>
-                                                            <button class="action quickview btn-detail" id="btn-detail" data-num="{{$item->item_id}}"><i class="pe-7s-look"></i></button>
+                                                            <a target="_blank" href="https://wa.me/{{$company->company_phone}}?text=Saya%20ingin%20pesan%20{{$item->item_title}}%20SKU%20:%20{{$item->item_sku}}" class="action bg-success"><i class="fa fa-whatsapp"></i></a>
+                                                            <button class="action bg-info btn-detail" id="btn-detail" data-num="{{$item->item_id}}"><i class="pe-7s-look"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,17 +113,17 @@
                                                                 <p>{{$item->item_desc}}</p>
                                                             </div>
                                                             <div class="box-inner">
-                                                               <span class="price">
-                                                                @if($item->item_discount > 0)
-                                                                       <span class="old">${{$item->item_price}}</span>
-                                                                       <span class="new">${{($item->item_price) - (($item->item_price * $item->item_discount)/100)}}</span>
-                                                                   @else
-                                                                       <span class="new">${{$item->item_price}}</span>
-                                                                   @endif
-                                                               </span>
+{{--                                                               <span class="price">--}}
+{{--                                                                @if($item->item_discount > 0)--}}
+{{--                                                                       <span class="old">${{$item->item_price}}</span>--}}
+{{--                                                                       <span class="new">${{($item->item_price) - (($item->item_price * $item->item_discount)/100)}}</span>--}}
+{{--                                                                   @else--}}
+{{--                                                                       <span class="new">${{$item->item_price}}</span>--}}
+{{--                                                                   @endif--}}
+{{--                                                               </span>--}}
                                                                 <div class="actions">
-                                                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i class="pe-7s-like"></i></button>
-                                                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                                                                    <a target="_blank" href="https://wa.me/{{$company->company_phone}}?text=Saya%20ingin%20pesan%20{{$item->item_title}}%20SKU%20:%20{{$item->item_sku}}" class="action bg-success"><i class="fa fa-whatsapp"></i></a>
+                                                                    <button class="action bg-info btn-detail-wishlist" id="btn-detail-wishlist" data-num="{{$item->item_id}}"><i class="pe-7s-look"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -250,19 +248,15 @@
                                     </ul>
                                 </div>
                                 <div class="pro-details-quality">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                                        <a href="#"><i class="fa fa-whatsapp"></i></a>
                                     </div>
                                     <div class="pro-details-cart">
-                                        <button class="add-cart"> Add To
-                                            Cart</button>
-                                    </div>
-                                    <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                        <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                        <a target="_blank" href="" class="add-cart item-whatsapp"> Chat on Whatsapp</a>
                                     </div>
                                 </div>
                                 <div class="payment-img">
-                                    <a href="#"><img src="assets/images/icons/payment.png" alt=""></a>
+                                    <a href="#"><img src="{{asset('assets/images/icons/payment.png')}}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -291,6 +285,7 @@
                 success : function (resp) {
                     var image = jQuery.parseJSON(resp.item_image);
                     var tag = resp.item_tag;
+                    var item_tag = '';
                     for (let i = 0; i < image.length; i++) {
                         $("#image"+i).attr("src",'{{asset('storage/images/product')}}/' + image[i]);
                         $("#image-small"+i).attr("src",'{{asset('storage/images/product')}}/' + image[i]);
@@ -304,6 +299,43 @@
                     $('.item-sku').html(resp.item_sku)
                     $('.item-category').html(resp.item_category)
                     $('.item-tag').html(item_tag)
+                    $('.item-whatsapp').attr('href', 'https://wa.me/{{$company->company_phone}}?text=Saya%20ingin%20pesan%20'+resp.item_title+'%20SKU%20:%20'+resp.item_sku)
+
+                    $('#item-detail').modal('show')
+                }
+            });
+        })
+        $('.btn-detail-wishlist').click(function (e){
+            e.preventDefault();
+            var item_id = $(this).data('num');
+            $.ajax({
+                headers: csrf_token,
+                url : '{{route('home')}}',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    '_type': 'data',
+                    '_data': 'item',
+                    'item_id': item_id,
+                },
+                success : function (resp) {
+                    var image = jQuery.parseJSON(resp.item_image);
+                    var tag = resp.item_tag;
+                    var item_tag = '';
+                    for (let i = 0; i < image.length; i++) {
+                        $("#image"+i).attr("src",'{{asset('storage/images/product')}}/' + image[i]);
+                        $("#image-small"+i).attr("src",'{{asset('storage/images/product')}}/' + image[i]);
+                    }
+                    for (let i = 0; i < tag.length; i++) {
+                        item_tag += '<li> <a href="#">'+ tag[i]+' </a></li>'
+                    }
+                    $('.item-title').html(resp.item_title)
+                    $('.new-price').html('$' + resp.item_price)
+                    $('.item-desc').html(resp.item_desc)
+                    $('.item-sku').html(resp.item_sku)
+                    $('.item-category').html(resp.item_category)
+                    $('.item-tag').html(item_tag)
+                    $('.item-whatsapp').attr('href', 'https://wa.me/{{$company->company_phone}}?text=Saya%20ingin%20pesan%20'+resp.item_title+'%20SKU%20:%20'+resp.item_sku)
                     $('#item-detail').modal('show')
                 }
             });
