@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post\Article;
+use App\Models\Post\Category as PostCategory;
+use App\Models\Post\Comment;
+use App\Models\Post\Tag as PostTag;
 use App\Models\Product\Category;
 use App\Models\Product\Item;
 use App\Models\Product\Tag;
@@ -23,5 +27,10 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)->create();
         Tag::factory(10)->create();
         Item::factory(12)->create();
+
+        Article::factory(12)->create();
+        PostCategory::factory(10)->create();
+        PostTag::factory(10)->create();
+        Comment::factory(10)->create();
     }
 }
